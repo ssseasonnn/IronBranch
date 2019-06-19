@@ -1,7 +1,73 @@
 # IronBranch
 
-[ ![Download](https://api.bintray.com/packages/ssseasonnn/android/IronBranch/images/download.svg?version=1.0.0) ](https://bintray.com/ssseasonnn/android/IronBranch/1.0.0/link)
+[![](https://jitpack.io/v/ssseasonnn/IronBranch.svg)](https://jitpack.io/#ssseasonnn/IronBranch)
 
+### How to use
+
+Step 1. Add the JitPack repository to your build file
+```gradle
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+
+Step 2. Add the dependency
+
+```gradle
+dependencies {
+	        implementation 'com.github.ssseasonnn:IronBranch:-SNAPSHOT'
+	}
+```
+
+Step 3. Usage
+
+Create io thread:
+```kotlin
+ioThread {
+    //do some thing
+    Log.d(TAG, Thread.currentThread().name)
+}
+```
+
+Create single io thread:
+```kotlin
+singleIoThread {
+    //do some thing
+    Log.d(TAG, Thread.currentThread().name)
+}
+```
+
+Switch main thread:
+```kotlin
+mainThread {
+    //do some thing
+    Log.d(TAG, Thread.currentThread().name)
+}
+```
+
+Assert main thread:
+```kotlin
+assertMainThread { 
+    //do some thing
+}
+```
+
+Assert main thread with result:
+```kotlin
+assertMainThreadWithResult { 
+    //do some thing
+}
+```
+
+Ensure main thread:
+```kotlin
+ensureMainThread { 
+    //do some thing    
+}
+```
 
 ### License
 

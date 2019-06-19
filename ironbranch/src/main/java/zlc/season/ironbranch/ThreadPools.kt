@@ -22,6 +22,32 @@ fun isMainThread(): Boolean {
     return Looper.getMainLooper().thread === Thread.currentThread()
 }
 
+fun ensureMainThread(block: () -> Unit) {
+    if (isMainThread()) {
+        block()
+    } else {
+        mainThread {
+            block()
+        }
+    }
+}
+
+fun assertMainThread(block: () -> Unit) {
+    if (isMainThread()) {
+        block()
+    } else {
+        throw IllegalStateException("This operation only supports the Main thread call!")
+    }
+}
+
+fun <T> assertMainThreadWithResult(block: () -> T): T {
+    if (isMainThread()) {
+        return block()
+    } else {
+        throw IllegalStateException("This operation only supports the Main thread call!")
+    }
+}
+
 private val mainHandler by lazy { Handler(Looper.getMainLooper()) }
 
 private val singleIO by lazy {

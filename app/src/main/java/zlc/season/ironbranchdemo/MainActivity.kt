@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
-import zlc.season.ironbranch.ioThread
-import zlc.season.ironbranch.mainThread
-import zlc.season.ironbranch.singleIoThread
+import zlc.season.ironbranch.*
 
 class MainActivity : AppCompatActivity() {
     companion object {
