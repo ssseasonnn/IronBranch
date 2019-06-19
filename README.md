@@ -1,3 +1,5 @@
+![](https://raw.githubusercontent.com/ssseasonnn/IronBranch/master/ironbranch.png)
+
 # IronBranch
 
 [![](https://jitpack.io/v/ssseasonnn/IronBranch.svg)](https://jitpack.io/#ssseasonnn/IronBranch)
@@ -7,19 +9,20 @@
 Step 1. Add the JitPack repository to your build file
 ```gradle
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
 ```
 
 Step 2. Add the dependency
 
 ```gradle
 dependencies {
-	        implementation 'com.github.ssseasonnn:IronBranch:-SNAPSHOT'
-	}
+    // replace xyz to latest version number
+	implementation 'com.github.ssseasonnn:IronBranch:xyz'
+}
 ```
 
 Step 3. Usage
