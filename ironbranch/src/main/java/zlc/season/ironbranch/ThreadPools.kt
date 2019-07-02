@@ -2,6 +2,7 @@ package zlc.season.ironbranch
 
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import java.util.concurrent.Executors
 import java.util.concurrent.ThreadFactory
 import java.util.concurrent.atomic.AtomicInteger
@@ -54,9 +55,12 @@ private val singleIO by lazy {
     Executors.newSingleThreadExecutor(object : ThreadFactory {
         private val threadId = AtomicInteger(0)
         override fun newThread(r: Runnable): Thread {
-            val t = Thread(r)
-            t.name = "iron_branch_single_io_${threadId.getAndIncrement()}"
-            return t
+            val thread = Thread(r)
+            thread.name = "iron_branch_single_io_${threadId.getAndIncrement()}"
+            thread.uncaughtExceptionHandler = Thread.UncaughtExceptionHandler { t, e ->
+                Log.w("IronBranch", "${t.name} -> ${e.message}", e)
+            }
+            return thread
         }
     })
 }
@@ -65,9 +69,12 @@ private val diskIO by lazy {
     Executors.newFixedThreadPool(4, object : ThreadFactory {
         private val threadId = AtomicInteger(0)
         override fun newThread(r: Runnable): Thread {
-            val t = Thread(r)
-            t.name = "iron_branch_io_${threadId.getAndIncrement()}"
-            return t
+            val thread = Thread(r)
+            thread.name = "iron_branch_io_${threadId.getAndIncrement()}"
+            thread.uncaughtExceptionHandler = Thread.UncaughtExceptionHandler { t, e ->
+                Log.w("IronBranch", "${t.name} -> ${e.message}", e)
+            }
+            return thread
         }
     })
 }
